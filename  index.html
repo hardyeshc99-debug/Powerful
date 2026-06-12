@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Denisa — Your Power Is Still Here</title>
+  <meta name="description" content="A private little power page for Denisa." />
+  <style>
+    :root{
+      --bg:#090716;
+      --bg2:#170b2d;
+      --text:#fff8ff;
+      --muted:#d9c7ef;
+      --pink:#ff4fa3;
+      --rose:#ff7a8a;
+      --gold:#ffd166;
+      --violet:#8b5cf6;
+      --cyan:#48d6ff;
+      --green:#7cf5ae;
+      --card:rgba(255,255,255,.095);
+      --card2:rgba(255,255,255,.14);
+      --line:rgba(255,255,255,.18);
+      --shadow:0 24px 80px rgba(0,0,0,.35);
+      --radius:28px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(255,79,163,.42), transparent 30%),
+        radial-gradient(circle at 85% 7%, rgba(72,214,255,.28), transparent 30%),
+        radial-gradient(circle at 50% 55%, rgba(139,92,246,.34), transparent 42%),
+        linear-gradient(135deg, var(--bg), var(--bg2) 55%, #110612);
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.42;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:42px 42px;
+      mask-image: radial-gradient(circle at 50% 15%, #000 0, transparent 72%);
+      z-index:-3;
+    }
+    .aurora{
+      position:fixed;
+      width:55vmax;height:55vmax;
+      border-radius:50%;
+      filter: blur(40px);
+      opacity:.18;
+      pointer-events:none;
+      z-index:-2;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    .a1{left:-18vmax;top:18vh;background:var(--pink)}
+    .a2{right:-16vmax;top:35vh;background:var(--cyan);animation-delay:-6s}
+    .a3{left:25vw;bottom:-25vmax;background:var(--gold);animation-delay:-11s}
+    @keyframes drift{to{transform:translate(8vw,-6vh) scale(1.12)}}
+    .sparkle{
+      position:fixed;
+      width:5px;height:5px;
+      background:white;
+      border-radius:50%;
+      opacity:.65;
+      pointer-events:none;
+      animation: floatUp linear forwards;
+      box-shadow:0 0 14px currentColor;
+      z-index:5;
+    }
+    @keyframes floatUp{
+      from{transform:translateY(0) scale(.7);opacity:.75}
+      to{transform:translateY(-110vh) scale(1.25);opacity:0}
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1120px, calc(100% - 32px));margin-inline:auto}
+    header{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(18px);
+      background:rgba(9,7,22,.58);
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+    nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px}
+    .logo{
+      width:38px;height:38px;display:grid;place-items:center;border-radius:14px;
+      background:linear-gradient(135deg,var(--pink),var(--gold));
+      box-shadow:0 10px 25px rgba(255,79,163,.35);
+    }
+    .navlinks{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      padding:9px 12px;border:1px solid transparent;border-radius:999px;color:var(--muted);font-size:14px;
+      transition:.2s ease;
+    }
+    .navlinks a:hover{color:#fff;border-color:var(--line);background:rgba(255,255,255,.06)}
+    .hero{position:relative;padding:82px 0 46px;min-height:calc(100vh - 70px);display:grid;align-items:center}
+    .heroGrid{display:grid;grid-template-columns:1.04fr .96fr;gap:34px;align-items:center}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:9px 14px;border:1px solid rgba(255,255,255,.19);border-radius:999px;
+      background:rgba(255,255,255,.07);color:#ffe1f1;font-weight:700;font-size:14px;
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
+    }
+    h1{
+      margin:18px 0 16px;
+      font-size:clamp(42px, 7vw, 88px);
+      line-height:.91;
+      letter-spacing:-4px;
+    }
+    .grad{
+      background:linear-gradient(90deg,#fff,var(--gold),var(--pink),#c9b7ff,#fff);
+      background-size:250% auto;
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      animation: shine 7s linear infinite;
+    }
+    @keyframes shine{to{background-position:250% center}}
+    .hero p.lead{
+      margin:0 0 24px;
+      color:var(--muted);
+      font-size:clamp(18px,2vw,22px);
+      line-height:1.7;
+      max-width:700px;
+    }
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{
+      border:0;cursor:pointer;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:14px 18px;border-radius:999px;font-weight:900;color:#160816;
+      background:linear-gradient(135deg,var(--gold),var(--rose));
+      box-shadow:0 16px 42px rgba(255,122,138,.28);
+      transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      font-size:15px;
+    }
+    .btn:hover{transform:translateY(-2px);filter:saturate(1.1);box-shadow:0 22px 55px rgba(255,122,138,.36)}
+    .btn.secondary{background:rgba(255,255,255,.1);color:#fff;border:1px solid var(--line);box-shadow:none}
+    .phoneCard{
+      min-height:590px;border-radius:42px;padding:22px;
+      background:linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.055));
+      border:1px solid rgba(255,255,255,.2);
+      box-shadow:var(--shadow);
+      position:relative;overflow:hidden;
+    }
+    .phoneCard::before{
+      content:"";position:absolute;inset:-2px;
+      background:radial-gradient(circle at 20% 15%, rgba(255,209,102,.5), transparent 30%), radial-gradient(circle at 80% 35%, rgba(255,79,163,.35), transparent 28%);
+      opacity:.75;pointer-events:none;
+    }
+    .innerPhone{
+      position:relative;z-index:1;height:100%;min-height:546px;border-radius:30px;
+      background:
+        linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.03)),
+        radial-gradient(circle at 50% 10%, rgba(255,255,255,.14), transparent 25%),
+        linear-gradient(165deg,#24133f,#16091f 60%,#260c24);
+      border:1px solid rgba(255,255,255,.14);
+      padding:26px;display:flex;flex-direction:column;justify-content:space-between;
+      overflow:hidden;
+    }
+    .moon{
+      width:150px;height:150px;border-radius:50%;margin:8px auto 0;
+      background:radial-gradient(circle at 35% 30%, #fff 0 8%, #fff5b8 9% 18%, #ffd166 19% 55%, #f59e0b 56% 100%);
+      box-shadow:0 0 70px rgba(255,209,102,.55), inset -18px -18px 32px rgba(133,60,0,.22);
+      animation:pulse 3.4s ease-in-out infinite;
+    }
+    @keyframes pulse{50%{transform:scale(1.045);box-shadow:0 0 92px rgba(255,209,102,.72)}}
+    .island{
+      width:100%;height:150px;position:relative;margin-top:6px;
+      background:linear-gradient(to top, rgba(72,214,255,.15), transparent 70%);
+      border-radius:0 0 28px 28px;
+    }
+    .wave{position:absolute;left:0;right:0;height:2px;background:rgba(255,255,255,.25);border-radius:999px;animation:wave 3s ease-in-out infinite}
+    .w1{bottom:42px}.w2{bottom:65px;animation-delay:-1s}.w3{bottom:86px;animation-delay:-2s}
+    @keyframes wave{50%{transform:translateX(18px);opacity:.55}}
+    .land{
+      position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:170px;height:45px;border-radius:55% 55% 45% 45%;
+      background:linear-gradient(180deg,#7cf5ae,#2bb673);box-shadow:0 12px 30px rgba(124,245,174,.22);
+    }
+    .palm{position:absolute;left:50%;bottom:55px;width:8px;height:80px;background:#7a461e;border-radius:999px;transform:rotate(8deg)}
+    .leaf{position:absolute;bottom:68px;left:calc(50% - 3px);width:70px;height:16px;border-radius:100% 0;background:#7cf5ae;transform-origin:left center}
+    .l1{transform:rotate(-12deg)}.l2{transform:rotate(-55deg)}.l3{transform:rotate(25deg)}.l4{transform:rotate(66deg)}
+    .miniNote{
+      margin-top:18px;padding:18px;border-radius:24px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);
+      color:#fff;line-height:1.6;
+    }
+    .miniNote strong{color:var(--gold)}
+    .section{padding:72px 0}
+    .sectionTitle{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}
+    .sectionTitle h2{font-size:clamp(30px,4vw,52px);line-height:1;margin:0;letter-spacing:-2px}
+    .sectionTitle p{margin:0;color:var(--muted);max-width:520px;line-height:1.6}
+    .grid{display:grid;gap:18px}
+    .cards3{grid-template-columns:repeat(3,1fr)}
+    .cards2{grid-template-columns:repeat(2,1fr)}
+    .card{
+      border:1px solid var(--line);background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:0 18px 55px rgba(0,0,0,.18);
+      position:relative;overflow:hidden;
+    }
+    .card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(255,255,255,.12), transparent 45%);opacity:.55;pointer-events:none}
+    .card > *{position:relative;z-index:1}
+    .icon{
+      width:52px;height:52px;border-radius:18px;display:grid;place-items:center;font-size:25px;margin-bottom:16px;
+      background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.16);
+    }
+    .card h3{margin:0 0 10px;font-size:22px}
+    .card p{margin:0;color:var(--muted);line-height:1.65}
+    .list{display:grid;gap:12px;margin:18px 0 0;padding:0;list-style:none}
+    .list li{display:flex;gap:10px;line-height:1.55;color:#f4eaff}
+    .list li span{color:var(--gold);font-weight:900}
+    .quoteBox{
+      padding:30px;border-radius:34px;background:linear-gradient(135deg, rgba(255,79,163,.20), rgba(139,92,246,.18), rgba(72,214,255,.14));
+      border:1px solid rgba(255,255,255,.2);box-shadow:var(--shadow);
+    }
+    .quoteText{font-size:clamp(24px,3vw,38px);line-height:1.25;margin:0 0 16px;font-weight:900;letter-spacing:-1px}
+    .quoteSmall{color:var(--muted);line-height:1.7;margin:0 0 22px}
+    .energyPanel{display:grid;grid-template-columns:1fr .9fr;gap:20px;align-items:stretch}
+    .meterCard{display:flex;flex-direction:column;gap:18px}
+    .meter{height:20px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;border:1px solid rgba(255,255,255,.15)}
+    .bar{height:100%;width:62%;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--gold),var(--pink));box-shadow:0 0 28px rgba(255,209,102,.35);transition:width .8s cubic-bezier(.22,1,.36,1)}
+    .boostText{font-size:22px;line-height:1.4;font-weight:850;margin:0;color:#fff}
+    .tiny{font-size:13px;color:#bfaed8;line-height:1.55;margin:0}
+    .rituals{display:grid;gap:12px}
+    .ritual{
+      padding:15px;border-radius:20px;background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.12);
+      display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;
+    }
+    .num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(255,209,102,.18);color:var(--gold);font-weight:900}
+    .ritual b{display:block;margin-bottom:4px}.ritual span{color:var(--muted);line-height:1.5}
+    .letter{
+      border-radius:36px;padding:clamp(24px,4vw,44px);
+      background:
+        linear-gradient(rgba(9,7,22,.72),rgba(9,7,22,.72)),
+        radial-gradient(circle at 20% 0%, rgba(255,79,163,.52), transparent 30%),
+        radial-gradient(circle at 95% 30%, rgba(255,209,102,.34), transparent 24%),
+        rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.22);
+      box-shadow:var(--shadow);
+    }
+    .letter h2{font-size:clamp(32px,4vw,56px);line-height:1;margin:0 0 22px;letter-spacing:-2px}
+    .letter p{font-size:18px;line-height:1.85;color:#f2e8ff;margin:0 0 18px}
+    .signature{font-size:24px;font-weight:900;color:var(--gold);margin-top:22px}
+    .footer{padding:35px 0 55px;color:#bfaed8;text-align:center;line-height:1.6}
+    .fab{
+      position:fixed;right:18px;bottom:18px;z-index:20;
+      width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
+      background:linear-gradient(135deg,var(--pink),var(--gold));box-shadow:0 16px 45px rgba(255,79,163,.36);
+      color:#180818;font-size:25px;display:grid;place-items:center;cursor:pointer;
+    }
+    .toast{
+      position:fixed;left:50%;bottom:88px;transform:translateX(-50%) translateY(20px);
+      width:min(560px,calc(100% - 34px));padding:18px 20px;border-radius:22px;
+      background:rgba(18,10,34,.92);border:1px solid rgba(255,255,255,.18);box-shadow:var(--shadow);z-index:30;
+      opacity:0;pointer-events:none;transition:.25s ease;color:#fff;line-height:1.55;text-align:center;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .openCard{cursor:pointer;transition:.2s ease}.openCard:hover{transform:translateY(-4px);background:var(--card2)}
+    .modal{
+      position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;place-items:center;padding:20px;z-index:40;
+      backdrop-filter:blur(10px);
+    }
+    .modal.show{display:grid}
+    .modalBox{width:min(620px,100%);border-radius:30px;background:linear-gradient(145deg,#27133e,#100816);border:1px solid rgba(255,255,255,.2);box-shadow:var(--shadow);padding:28px;position:relative}
+    .close{position:absolute;right:16px;top:14px;border:0;background:rgba(255,255,255,.1);color:#fff;border-radius:50%;width:38px;height:38px;font-size:20px;cursor:pointer}
+    .modalBox h3{font-size:30px;margin:0 44px 12px 0}.modalBox p{color:var(--muted);line-height:1.75;margin:0 0 14px}
+    .modalBox .mantra{font-size:23px;color:#fff;font-weight:900;line-height:1.35;margin-top:18px}
+    .breathCircle{
+      width:150px;height:150px;border-radius:50%;margin:24px auto;
+      background:radial-gradient(circle,#fff 0 6%, var(--cyan) 7% 26%, var(--violet) 27% 63%, var(--pink));
+      box-shadow:0 0 65px rgba(72,214,255,.33);animation:breathe 8s ease-in-out infinite;
+    }
+    @keyframes breathe{0%,100%{transform:scale(.78)}50%{transform:scale(1.08)}}
+    .breathText{text-align:center;font-weight:900;font-size:22px;color:#fff}
+    .smallCaps{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:#ffd7e9;font-weight:900}
+    @media (max-width:880px){
+      .hero{padding-top:48px}.heroGrid,.energyPanel{grid-template-columns:1fr}.phoneCard{min-height:500px}.innerPhone{min-height:456px}.navlinks{display:none}.cards3,.cards2{grid-template-columns:1fr}.sectionTitle{display:block}.sectionTitle p{margin-top:12px}h1{letter-spacing:-2px}
+    }
+    @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#top" aria-label="Home"><span class="logo">⚡</span><span>Denisa Power Page</span></a>
+        <div class="navlinks" aria-label="Page sections">
+          <a href="#strength">Strength</a>
+          <a href="#energy">Energy</a>
+          <a href="#island">Island</a>
+          <a href="#letter">Letter</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="heroGrid">
+        <div>
+          <div class="pill">✨ For the woman who keeps going, even when life gets heavy</div>
+          <h1>Denisa,<br><span class="grad">your power is still here.</span></h1>
+          <p class="lead">When work feels lonely, when the day feels too loud, when your heart feels tired — this little place is here to remind you: you are strong, kind, brave, and deeply loved.</p>
+          <div class="buttons">
+            <a class="btn" href="#energy">Give me energy ⚡</a>
+            <button class="btn secondary" id="calmBtn" type="button">I feel overwhelmed</button>
+          </div>
+        </div>
+        <div class="phoneCard" aria-label="Decorative island scene">
+          <div class="innerPhone">
+            <div>
+              <div class="smallCaps">Not a stranded island</div>
+              <div class="moon" aria-hidden="true"></div>
+              <div class="island" aria-hidden="true">
+                <div class="wave w1"></div><div class="wave w2"></div><div class="wave w3"></div>
+                <div class="land"></div><div class="palm"></div>
+                <div class="leaf l1"></div><div class="leaf l2"></div><div class="leaf l3"></div><div class="leaf l4"></div>
+              </div>
+            </div>
+            <div class="miniNote">
+              <strong>You are the lighthouse.</strong><br>
+              Even if you are doing so much alone, your light is not small. It guides. It survives. It shines.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="strength" class="section wrap">
+      <div class="sectionTitle">
+        <h2>What makes you powerful</h2>
+        <p>Not just the big achievements. The quiet qualities too — the ones that show your real character.</p>
+      </div>
+      <div class="grid cards3">
+        <article class="card">
+          <div class="icon">🦁</div>
+          <h3>Strength</h3>
+          <p>You carry responsibilities with a courage that is rare. Even tired, you still try. That is not weakness — that is warrior energy.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🧭</div>
+          <h3>Moral values</h3>
+          <p>You have a sense of right and wrong that makes you trustworthy. Your heart does not take the easy path if it is not the honest one.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💛</div>
+          <h3>A giant heart</h3>
+          <p>Your kindness is not small. It is big, warm, and real — the kind of goodness that makes people feel safe around you.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="energy" class="section wrap">
+      <div class="energyPanel">
+        <div class="quoteBox">
+          <p class="quoteText" id="powerQuote">You do not have to feel unstoppable to keep moving. One gentle step is still power.</p>
+          <p class="quoteSmall">Tap the button whenever your mind says “I cannot.” Let this page answer back: “You can — and you do not have to do everything all at once.”</p>
+          <div class="buttons">
+            <button class="btn" id="boostBtn" type="button">Boost my mood ⚡</button>
+            <button class="btn secondary" id="sparkBtn" type="button">Send sparkles ✨</button>
+          </div>
+        </div>
+        <div class="card meterCard">
+          <div>
+            <div class="smallCaps">Energy meter</div>
+            <h3 style="font-size:30px;margin:8px 0 12px">Your light is charging</h3>
+            <div class="meter" aria-label="Energy meter"><div class="bar" id="energyBar"></div></div>
+          </div>
+          <p class="boostText" id="boostText">Take one breath. Relax your shoulders. Your day is not bigger than your spirit.</p>
+          <p class="tiny">Tiny reminder: rest is not laziness. Rest is how strong people refill their fire.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <div class="sectionTitle">
+        <h2>5-minute power reset</h2>
+        <p>For the moments when the job feels heavy and there is nobody beside you in the team.</p>
+      </div>
+      <div class="grid cards2">
+        <article class="card rituals">
+          <div class="ritual"><div class="num">1</div><div><b>Breathe like you are safe.</b><span>Inhale for 4, hold for 2, exhale for 6. Do it three times. Your nervous system listens.</span></div></div>
+          <div class="ritual"><div class="num">2</div><div><b>Drink water and stand up.</b><span>Move your body for 60 seconds. Stretch your neck, wrists, back, and jaw.</span></div></div>
+          <div class="ritual"><div class="num">3</div><div><b>Pick only the next task.</b><span>Not the entire mountain. Just the next stone. Write it down and finish that one thing.</span></div></div>
+        </article>
+        <article class="card rituals">
+          <div class="ritual"><div class="num">4</div><div><b>Tell yourself the truth.</b><span>“This is hard, but I am capable. I have handled hard days before.”</span></div></div>
+          <div class="ritual"><div class="num">5</div><div><b>Celebrate a tiny win.</b><span>Send yourself a mental high-five. Progress counts even when it is invisible to others.</span></div></div>
+          <div class="ritual"><div class="num">❤</div><div><b>Remember Hardyesh is proud of you.</b><span>Not only when you are strong — also when you are tired, quiet, emotional, or trying.</span></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="island" class="section wrap">
+      <div class="sectionTitle">
+        <h2>When work feels like an island</h2>
+        <p>You may be alone in the role, but you are not alone in life. Use these cards when the day feels too much.</p>
+      </div>
+      <div class="grid cards3">
+        <article class="card openCard" data-title="When you feel alone" data-text="Look around for one real support point: a message you can send, a note you can write, a small boundary you can set, or a 2-minute pause. Alone at work does not mean unsupported as a person." data-mantra="I can ask, pause, breathe, and continue. I am not abandoned.">
+          <div class="icon">🏝️</div>
+          <h3>Open when alone</h3>
+          <p>A reminder that isolation is a feeling — not your identity.</p>
+        </article>
+        <article class="card openCard" data-title="When you are exhausted" data-text="Your body is asking to be cared for, not criticized. Lower the pressure for five minutes. Do the smallest useful thing. Then rest your eyes and breathe." data-mantra="My worth is not measured by how much I suffer. I deserve care.">
+          <div class="icon">🌙</div>
+          <h3>Open when tired</h3>
+          <p>Permission to slow down without feeling guilty.</p>
+        </article>
+        <article class="card openCard" data-title="When you doubt yourself" data-text="Doubt is loud when you are drained. It is not always truth. Remember your history: you have survived difficult days, solved problems, and stayed kind." data-mantra="I am learning. I am capable. I am stronger than this moment.">
+          <div class="icon">👑</div>
+          <h3>Open when doubting</h3>
+          <p>Your crown does not disappear just because the day is heavy.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <div class="sectionTitle">
+        <h2>Things I hope you never forget</h2>
+        <p>Quick sparks for the heart — short enough to remember during a busy workday.</p>
+      </div>
+      <div class="grid cards3">
+        <article class="card"><div class="icon">🔥</div><h3>Your fire is real</h3><p>Some days it is a flame. Some days it is one warm ember. Both are still fire.</p></article>
+        <article class="card"><div class="icon">🌻</div><h3>Your softness is power</h3><p>Having a big heart in a heavy world is not weakness. It is rare strength.</p></article>
+        <article class="card"><div class="icon">💫</div><h3>You inspire me</h3><p>Thinking about your personality, values, and heart makes me feel grateful and proud.</p></article>
+      </div>
+    </section>
+
+    <section id="letter" class="section wrap">
+      <div class="letter">
+        <div class="smallCaps">A note from Hardyesh</div>
+        <h2>Dear Denisa,</h2>
+        <p>I know life can feel heavy sometimes. I know there are days when work feels lonely, like you are standing on an island with too much responsibility and not enough support.</p>
+        <p>But when I think about you, I do not only see tiredness. I see strength. I see a woman with moral values, a good personality, and a heart so big it makes the world around her feel warmer.</p>
+        <p>Please remember: you do not need to be perfect to be amazing. You do not need to hide your emotions to be strong. You are allowed to rest, to breathe, to feel, and to begin again.</p>
+        <p>I love you. I admire you. And I am proud of the beautiful person you are — on your strongest days and on your hardest days too.</p>
+        <div class="signature">— Hardyesh ❤</div>
+      </div>
+    </section>
+  </main>
+
+  <button class="fab" id="fab" type="button" aria-label="Show a love note">❤</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" id="closeModal" type="button" aria-label="Close">×</button>
+      <h3 id="modalTitle">Breathe with me</h3>
+      <p id="modalText">Inhale slowly. Hold. Exhale longer. You are safe in this moment.</p>
+      <div class="breathCircle" id="breathCircle" aria-hidden="true"></div>
+      <div class="breathText" id="breathText">Inhale… exhale…</div>
+      <p class="mantra" id="modalMantra">I am not the weight I carry. I am the strength that carries it.</p>
+    </div>
+  </div>
+
+  <script>
+    const quotes = [
+      "You do not have to feel unstoppable to keep moving. One gentle step is still power.",
+      "A heavy day cannot erase a strong woman. It can only ask her to rest and rise again.",
+      "You are not behind. You are carrying more than people can see, and still showing up.",
+      "Your kindness is not weakness. Your big heart is one of your greatest strengths.",
+      "Even alone at work, you are not small. You are capable, intelligent, and brave.",
+      "Today does not need your perfection. It only needs your next calm step.",
+      "The world may feel loud, but your inner voice can be louder: I can handle this moment."
+    ];
+    const boosts = [
+      "Put one hand on your heart. Breathe. You are doing better than your tired mind is telling you.",
+      "Unclench your jaw, relax your shoulders, drink water. Queen energy includes caring for the queen.",
+      "Choose one tiny task and win it. Tiny wins become momentum.",
+      "You are allowed to ask for help. You are allowed to rest. You are allowed to be human.",
+      "Your heart is big, but you do not have to carry everything inside it today.",
+      "Pause for 20 seconds. Look at something beautiful. Let your mind come back home.",
+      "Hardyesh believes in you — especially when you forget to believe in yourself."
+    ];
+    const loveNotes = [
+      "Denisa, you are loved on tired days too.",
+      "Reminder: your smile has power, your heart has magic, and your presence matters.",
+      "You are not alone. Somewhere, Hardyesh is proud of you right now.",
+      "Your softness, honesty, and strength make you unforgettable.",
+      "One breath. One step. One little win. You have got this."
+    ];
+
+    const quoteEl = document.getElementById('powerQuote');
+    const boostEl = document.getElementById('boostText');
+    const barEl = document.getElementById('energyBar');
+    const toast = document.getElementById('toast');
+    let boostIndex = 0;
+
+    function pick(arr){ return arr[Math.floor(Math.random()*arr.length)] }
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(showToast.t);
+      showToast.t = setTimeout(()=>toast.classList.remove('show'), 4200);
+    }
+    function sparkleBurst(count=34){
+      for(let i=0;i<count;i++){
+        const s = document.createElement('span');
+        s.className = 'sparkle';
+        s.style.left = Math.random()*100 + 'vw';
+        s.style.bottom = '-10px';
+        s.style.color = ['#fff','#ffd166','#ff4fa3','#48d6ff','#7cf5ae'][Math.floor(Math.random()*5)];
+        s.style.animationDuration = (3 + Math.random()*4) + 's';
+        s.style.animationDelay = (Math.random()*0.8) + 's';
+        document.body.appendChild(s);
+        setTimeout(()=>s.remove(), 7600);
+      }
+    }
+
+    document.getElementById('boostBtn').addEventListener('click', () => {
+      boostIndex++;
+      quoteEl.textContent = pick(quotes);
+      boostEl.textContent = pick(boosts);
+      barEl.style.width = Math.min(100, 62 + boostIndex * 7) + '%';
+      sparkleBurst(18);
+      showToast('Energy sent. Tiny win activated. ⚡');
+    });
+    document.getElementById('sparkBtn').addEventListener('click', () => sparkleBurst(55));
+    document.getElementById('fab').addEventListener('click', () => { showToast(pick(loveNotes)); sparkleBurst(16); });
+
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const modalMantra = document.getElementById('modalMantra');
+    const breathText = document.getElementById('breathText');
+    let breathTimer;
+
+    function openModal(title, text, mantra){
+      modalTitle.textContent = title;
+      modalText.textContent = text;
+      modalMantra.textContent = mantra;
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+      let phase = 0;
+      const phases = ['Inhale slowly…', 'Hold gently…', 'Exhale the weight…', 'You are safe.'];
+      breathText.textContent = phases[0];
+      clearInterval(breathTimer);
+      breathTimer = setInterval(()=>{ phase = (phase + 1) % phases.length; breathText.textContent = phases[phase]; }, 2000);
+    }
+    function hideModal(){
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+      clearInterval(breathTimer);
+    }
+    document.getElementById('calmBtn').addEventListener('click', () => openModal('Breathe with me', 'Inhale slowly. Hold. Exhale longer. You are safe in this moment. Let the next minute be only about breathing.', 'I am not the weight I carry. I am the strength that carries it.'));
+    closeModal.addEventListener('click', hideModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) hideModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') hideModal(); });
+
+    document.querySelectorAll('.openCard').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.title, card.dataset.text, card.dataset.mantra));
+    });
+
+    setTimeout(()=>sparkleBurst(18), 500);
+  </script>
+</body>
+</html>
